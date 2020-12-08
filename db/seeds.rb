@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts "Creating seeds -----"
+10.times do |r|
+ category = ["chinese", "italian", "japanese", "french", "belgian"].sample
+  r = Restaurant.new(name: Faker::Restaurant.name, address: Faker::Address.street_address, category: category, phone_number: Faker::PhoneNumber.phone_number )
+  r.save!
+  puts "inserting #{r.name}"
+end
+
+puts " -- End of seeding"
