@@ -3,12 +3,18 @@
 <h1>Find a list of all restaurants in town</h1>
 </div>
 
+<br>
+
+<%= link_to  "Create a new restaurant", new_restaurant_path %>
+<br><br>
+
+
 <table class="table">
    <tr>
     <th>Name</th>
     <th>Address</th>
     <th>Category</th>
-    <th>phone number </th>
+    <th>phone number</th>
   </tr>
     <% @restaurants.each do |restaurant| %>
   <tr>
@@ -16,6 +22,8 @@
     <td> <%=restaurant.address  %> </td>
     <td> <%= restaurant.category %> </td>
     <td> <%= restaurant.phone_number %></td>
+    <td><%= link_to "Voir", restaurant_path(restaurant)  %></td>
+    <td><%= link_to "Delete", restaurant_path(restaurant), method: :delete, data:{ confirm: "Delete the restaurant and the reviews" }  %></td>
   </tr>
   <% end %>
 </table>

@@ -1,0 +1,8 @@
+<h2>Add a review <%= @restaurant.name %></h2>
+
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating, priority: [ 1 ], collection: [ 1, 2, 3, 4, 5]%>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>

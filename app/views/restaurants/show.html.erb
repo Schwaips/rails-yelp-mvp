@@ -1,4 +1,10 @@
-<h2>Details on your <%= @restaurant.name %></h2>
+<h2>Details on  <%= @restaurant.name %></h2>
+<br>
+
+<%= link_to  "Back to the list", restaurants_path %>
+<br>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+<br>
 <br>
 <table class="table">
    <tr>
@@ -14,3 +20,26 @@
     <td> <%= @restaurant.phone_number %></td>
   </tr>
 </table>
+
+<h3>Customer reviews :</h3>
+<table class="table">
+   <tr>
+    <th>Rating</th>
+    <th>Description</th>
+  </tr>
+
+  <% @restaurant.reviews.each do |review| %>
+  <tr>
+    <td> <%= review.rating %>/5</td>
+    <td> <%= review.content  %></td>
+    <td> <%= link_to "Remove review", review_path(review), method: :delete, data:{ confirm: "Remove review?" } %></td>
+    <td><%= link_to "Edit review", edit_review_path(review)  %></td>
+  </tr>
+<% end %>
+
+</table>
+
+
+<%= link_to  "Back to the list", restaurants_path %>
+<br>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
